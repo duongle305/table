@@ -1,0 +1,28 @@
+{
+    "name": "duolee/table",
+    "description": "DataTable based the lLaravel Framework",
+    "type": "project",
+    "require": {
+        "yajra/laravel-datatables": "^1.5"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Duong Le",
+            "email": "duongrom.it.305@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "autoload": {
+        "psr-4": {
+            "DuoLee\\Table\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "DuoLee\\Table\\Providers\\TableServiceProvider"
+            ]
+        }
+    }
+}
