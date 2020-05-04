@@ -9,17 +9,7 @@ use Yajra\DataTables\Services\DataTable;
 
 abstract class TableAbstract extends DataTable
 {
-    protected $model;
-
-    protected $table;
-
     protected $tableId;
-
-    public function __construct(DataTables $table, Model $model)
-    {
-        $this->table = $table;
-        $this->model = $model;
-    }
 
     protected function getTableId()
     {
@@ -102,11 +92,17 @@ abstract class TableAbstract extends DataTable
      */
     abstract public function dataTable();
 
+    /**
+     * @return string
+     */
     protected function initComplete()
     {
         return 'function(){}';
     }
 
+    /**
+     * @return string
+     */
     protected function drawCallback()
     {
         return 'function(){}';
