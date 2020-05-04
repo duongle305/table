@@ -11,16 +11,16 @@ use Illuminate\Support\ServiceProvider;
 
 class TableServiceProvider extends ServiceProvider
 {
-    protected $module = 'table';
+    protected string $module = 'table';
 
     public function boot()
     {
         $this->loadTranslationsFrom($this->getPath('resources/lang'), $this->module);
         $this->loadViewsFrom($this->getPath('resources/views'), $this->module);
-        if ($this->getPath('routes/web.php')) {
-            $this->loadRoutesFrom($this->getPath('routes/web.php'));
-        }
         $this->applyConfig();
+        $this->publishes([
+            $this->getPath('config/table.php') => config_path('table.php')
+        ], 'table-config');
     }
 
     public function register()
