@@ -1,12 +1,11 @@
 {
     "name": "duolee/table",
-    "description": "DataTable based the lLaravel Framework",
+    "description": "DataTable based the Laravel Framework",
     "require": {
         "php": "^7.4",
         "yajra/laravel-datatables-oracle": "^9.4",
         "yajra/laravel-datatables-html": "^4.0",
         "yajra/laravel-datatables-buttons": "^4.6",
-        "ext-gd": "*"
     },
     "license": "MIT",
     "authors": [
