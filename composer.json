@@ -1,7 +1,6 @@
 {
     "name": "duolee/table",
     "description": "DataTable based the lLaravel Framework",
-    "type": "project",
     "require": {
         "php": "7.4",
         "yajra/laravel-datatables-oracle": "^9.4",
