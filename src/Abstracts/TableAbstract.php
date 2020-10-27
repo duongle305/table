@@ -21,7 +21,7 @@ abstract class TableAbstract extends DataTable
         return $this->builder()
             ->setTableId($this->getTableId())
             ->columns($this->columns())
-            ->ajax(['url' => $this->ajaxUrl()])
+            ->ajax($this->ajaxAttributes())
             ->parameters([
                 'dom' => $this->dom(),
                 'buttons' => $this->buttons(),
@@ -106,6 +106,16 @@ abstract class TableAbstract extends DataTable
     protected function drawCallback()
     {
         return 'function(){}';
+    }
+
+    /**
+     * @return array|string[]
+     */
+    public function ajaxAttributes(): array
+    {
+        return [
+            'url' => $this->ajaxUrl()
+        ];
     }
 
 }
