@@ -105,26 +105,22 @@ class Builder extends TableBuilder
         if (!$this->isDisabled('jquery')) {
             $jquery = $this->getExtension('jquery');
             $jquery = is_array($jquery)
-                ? array_map(fn($src) => $this->resolveGenerateLibrary($src), $jquery)
+                ? array_map(function($src){
+                    return $this->resolveGenerateLibrary($src);
+                }, $jquery)
                 : [$this->resolveGenerateLibrary($jquery)];
-            $extensions = [
-                ...$jquery,
-            ];
+            $extensions = array_merge($extensions, $jquery);
         }
         if (!$this->isDisabled('datatable')) {
             $datatable = $this->getExtension('datatable');
             $datatable = is_array($datatable)
-                ? array_map(fn($src) => $this->resolveGenerateLibrary($src), $datatable)
+                ? array_map(function($src){
+                    return $this->resolveGenerateLibrary($src);
+                }, $datatable)
                 : [$this->resolveGenerateLibrary($datatable)];
-            $extensions = [
-                ...$extensions,
-                ...$datatable,
-            ];
+            $extensions = array_merge($extensions, $datatable);
         }
-        return [
-            ...$extensions,
-            ...$this->buttonLibraries(),
-        ];
+        return array_merge($extensions, $this->buttonLibraries());
     }
 
     /**
@@ -136,13 +132,16 @@ class Builder extends TableBuilder
         $libraries = [];
         if ($this->hasButton()) {
             $libraries = is_array($extensions['button'][$this->resource]) ?
-                array_map(fn($src) => $this->resolveGenerateLibrary($src),
-                    $extensions['button'][$this->resource]) :
+                array_map(function($src){
+                    return $this->resolveGenerateLibrary($src);
+                }, $extensions['button'][$this->resource]) :
                 [$this->resolveGenerateLibrary($extensions['button'][$this->resource])];
             foreach ($extensions as $name => $extension) {
                 if (collect(array_values($this->attributes['buttons']))->contains($name)) {
                     if (is_array($extension[$this->resource])) {
-                        $libraries = array_merge($libraries, array_map(fn($src) => $this->resolveGenerateLibrary($src), $extension[$this->resource]));
+                        $libraries = array_merge($libraries, array_map(function($src){
+                            return $this->resolveGenerateLibrary($src);
+                        }, $extension[$this->resource]));
                     } else {
                         $libraries[] = $this->resolveGenerateLibrary($extension[$this->resource]);
                     }
@@ -160,7 +159,7 @@ class Builder extends TableBuilder
      */
     public function scripts($script = null, array $attributes = ['type' => 'text/javascript'])
     {
-        return implode("\n", [...$this->libraries(), parent::scripts($script, $attributes)]);
+        return implode("\n", array_merge($this->libraries(), parent::scripts($script, $attributes)));
     }
 
 
