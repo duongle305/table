@@ -159,7 +159,9 @@ class Builder extends TableBuilder
      */
     public function scripts($script = null, array $attributes = ['type' => 'text/javascript'])
     {
-        return implode("\n", array_merge($this->libraries(), parent::scripts($script, $attributes)));
+        $libraries = $this->libraries();
+        $libraries[] = parent::scripts($script, $attributes);
+        return implode("\n", $libraries);
     }
 
 
