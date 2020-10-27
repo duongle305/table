@@ -11,7 +11,7 @@ use Illuminate\Support\ServiceProvider;
 
 class TableServiceProvider extends ServiceProvider
 {
-    protected string $module = 'table';
+    protected $module = 'table';
 
     public function boot()
     {
