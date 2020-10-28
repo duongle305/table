@@ -16,7 +16,7 @@ abstract class TableAbstract extends DataTable
     /**
      * @param $source
      */
-    protected function setSource($source)
+    public function setSource($source)
     {
         $this->source = $source;
     }
