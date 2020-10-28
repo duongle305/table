@@ -11,6 +11,16 @@ abstract class TableAbstract extends DataTable
 {
     protected $tableId;
 
+    protected $source;
+
+    /**
+     * @param $source
+     */
+    protected function setSource($source)
+    {
+        $this->source = $source;
+    }
+
     protected function getTableId()
     {
         return $this->tableId ?? \Str::camel(\Str::afterLast(get_class($this), '\\'));
@@ -78,9 +88,10 @@ abstract class TableAbstract extends DataTable
     abstract protected function columns(): array;
 
     /**
+     * @param array $data
      * @return mixed
      */
-    abstract public function renderTable();
+    abstract public function renderTable($data = []);
 
     /**
      * @return mixed
