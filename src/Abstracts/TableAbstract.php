@@ -21,7 +21,7 @@ abstract class TableAbstract extends DataTable
         $this->source = $source;
     }
 
-    protected function getTableId()
+    public function getTableId()
     {
         return $this->tableId ?? \Str::camel(\Str::afterLast(get_class($this), '\\'));
     }
