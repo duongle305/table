@@ -46,23 +46,7 @@ abstract class TableAbstract extends DataTable
                 'bServerSide' => true,
                 'bDeferRender' => true,
                 'bProcessing' => true,
-                'language' => [
-                    'emptyTable' => trans('table::table.emptyTable'),
-                    'info' => trans('table::table.info'),
-                    'infoEmpty' => trans('table::table.infoEmpty'),
-                    'lengthMenu' => trans('table::table.lengthMenu'),
-                    'infoFiltered' => trans('table::table.infoFiltered'),
-                    'loadingRecords' => trans('table::table.loadingRecords'),
-                    'processing' => trans('table::table.processing'),
-                    'search' => trans('table::table.search'),
-                    'zeroRecords' => trans('table::table.zeroRecords'),
-                    "paginate" => [
-                        'first' => trans('table::table.paginate.first'),
-                        'last' => trans('table::table.paginate.last'),
-                        "next" => trans('table::table.paginate.next'),
-                        "previous" => trans('table::table.paginate.previous')
-                    ]
-                ]
+                'language' => $this->languages()
             ]);
     }
 
@@ -129,4 +113,27 @@ abstract class TableAbstract extends DataTable
         ];
     }
 
+    /**
+     * @return array
+     */
+    public function languages(): array
+    {
+        return [
+            'emptyTable' => trans('table::table.emptyTable'),
+            'info' => trans('table::table.info'),
+            'infoEmpty' => trans('table::table.infoEmpty'),
+            'lengthMenu' => trans('table::table.lengthMenu'),
+            'infoFiltered' => trans('table::table.infoFiltered'),
+            'loadingRecords' => trans('table::table.loadingRecords'),
+            'processing' => trans('table::table.processing'),
+            'search' => trans('table::table.search'),
+            'zeroRecords' => trans('table::table.zeroRecords'),
+            "paginate" => [
+                'first' => trans('table::table.paginate.first'),
+                'last' => trans('table::table.paginate.last'),
+                "next" => trans('table::table.paginate.next'),
+                "previous" => trans('table::table.paginate.previous')
+            ]
+        ];
+    }
 }
